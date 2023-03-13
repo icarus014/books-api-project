@@ -3,7 +3,8 @@
 // DEPENDENCIES
 const express = require('express')
 
-// Configuration 
+// Configuration
+require('dotenv').config();
 const app = express();
 
 // Middleware
@@ -18,8 +19,8 @@ const bookController = require('./controllers/books_controller');
 app.use('/books', bookController);
 
 // LISTEN
-app.listen(3000, () => {
-    console.log("I AM ALIVE or Greetings from port: ", PORT);
+app.listen(process.env.PORT, () => {
+    console.log("I AM ALIVE or Greetings from port: ", process.env.PORT);
 })
 
 module.exports = app;
