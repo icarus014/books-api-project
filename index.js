@@ -1,24 +1,23 @@
-// Dependencies
+// DEPENDENCIES
 const express = require('express')
 
+// Configuration 
+require('dotenv').config();
+const PORT = process.env.PORT;
+const app = express();
 
-// CONFIGURATION
-require('dotenv').config()
-const PORT = process.env.PORT
-const app = express()
+// Middleware
+app.use(express.urlencoded({ extended: true }));
 
-
-// MIDDLEWARE
-app.use(express.urlencoded({extended: true}))
-
-app.get('/', (req,res)=>{
-  res.send("hello from index!")
+app.get('/', (req, res) => {
+    res.send("Hello from Index!")
 })
-// controller
-const bookController = require('./controllers/books_controller')
-app.use('/books', bookController)
 
-// Listen
+// controllers
+const bookController = require('./controllers/books_controller');
+app.use('/books', bookController);
+
+// LISTEN
 app.listen(PORT, () => {
-    console.log( PORT,"is alive")
+    console.log("I AM ALIVE or Greetings from port: ", PORT);
 })
